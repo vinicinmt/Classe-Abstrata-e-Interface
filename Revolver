@@ -1,0 +1,20 @@
+using UnityEngine;  
+
+public class Revolver : Arma, IArmaFogo
+{
+    void Start()
+    {
+        Nome = "Revolver";
+        Dano = 50;
+    }
+
+    public override void Usar()
+    {
+        Atirar();
+    }
+
+    public void Atirar()
+    {
+        Debug.Log($"{Nome} atirou causando {Dano} de dano!");
+    }
+}
