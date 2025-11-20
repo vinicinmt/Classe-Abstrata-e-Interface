@@ -1,0 +1,20 @@
+using UnityEngine;  
+
+public class Espada : Arma, IArmaDeCorte
+{
+    void Start()
+    {
+        Nome = "Espada";
+        Dano = 30;
+    }
+
+    public override void Usar()
+    {
+        Cortar();
+    }
+
+    public void Cortar()
+    {
+        Debug.Log($"{Nome} cortou causando {Dano} de dano!");
+    }
+}
