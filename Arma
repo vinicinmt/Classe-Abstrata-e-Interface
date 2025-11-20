@@ -1,0 +1,9 @@
+using UnityEngine;  
+
+public abstract class Arma : MonoBehaviour
+{
+    public string Nome;
+    public int Dano;
+
+    public abstract void Usar();
+}
