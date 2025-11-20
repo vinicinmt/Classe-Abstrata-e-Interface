@@ -1,0 +1,58 @@
+using UnityEngine;
+using UnityEngine.InputSystem;  
+
+public class Player : MonoBehaviour
+{
+    private Arma armaAtual;
+    private PlayerInput playerInput;  
+
+    void Start()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        EquiparEspada();
+    }
+
+    void Update()
+    {
+        
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            EquiparEspada();
+        }
+        if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            EquiparRevolver();
+        }
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && armaAtual != null)
+        {
+            armaAtual.Usar();
+        }
+    }
+
+    void EquiparEspada()
+    {
+        if (armaAtual != null)
+            Destroy(armaAtual.gameObject);
+
+        GameObject espadaObj = new GameObject("EspadaEquipada");
+        espadaObj.transform.SetParent(this.transform);
+        espadaObj.transform.localPosition = Vector3.zero;
+        armaAtual = espadaObj.AddComponent<Espada>();
+
+        Debug.Log("Espada equipada!");
+    }
+
+    void EquiparRevolver()
+    {
+        if (armaAtual != null)
+            Destroy(armaAtual.gameObject);
+
+        GameObject revolverObj = new GameObject("RevolverEquipado");
+        revolverObj.transform.SetParent(this.transform);
+        revolverObj.transform.localPosition = Vector3.zero;
+        armaAtual = revolverObj.AddComponent<Revolver>();
+
+        Debug.Log("Revolver equipado!");
+    }
+}
